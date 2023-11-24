@@ -1,11 +1,36 @@
 func love*load() {
-    var balls = "Hello";
+    class Player {
+        func new(x, y) {
+            this.x = x
+            this.y = y
+        }
+
+        func draw() {
+            love*graphics*rectangle("fill", this.x, this.y, 50, 50)
+        }
+    }
+
+    var player = Player(100, 100)
+
+    love*window*setTitle("Hello, from StupidLang!")
+    love*graphics*setBackgroundColor(0.4, 0.4, 0.4)
 }
 
 func love*update(dt) {
-    
+    if love*keyboard*isDown("right") || love*keyboard*isDown("d") {
+        player.x = player.x + 100 * dt
+    }
+    if love*keyboard*isDown("left") || love*keyboard*isDown("a") {
+        player.x = player.x - 100 * dt
+    }
+    if love*keyboard*isDown("up") || love*keyboard*isDown("w") {
+        player.y = player.y - 100 * dt
+    }
+    if love*keyboard*isDown("down") || love*keyboard*isDown("s") {
+        player.y = player.y + 100 * dt
+    }
 }
 
 func love*draw() {
-    love*graphics*print(balls, 400, 300);
+    player:draw()
 }
