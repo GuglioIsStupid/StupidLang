@@ -1,0 +1,11 @@
+func love*load() {
+    var balls = "Hello";
+}
+
+func love*update(dt) {
+    
+}
+
+func love*draw() {
+    love*graphics*print(balls, 400, 300);
+}
